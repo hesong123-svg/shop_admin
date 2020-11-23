@@ -62,7 +62,6 @@ export default {
            // validate:对表单数据进行验证的方法
             // 验证结束后执行回调函数 ，该函数的参数就是验证结构
             this.$refs.fromName.validate((value)=>{
-                console.log(value);
                 if(value){
                     this.login(this.info)
                 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import http from '@/utils/http.js'
 import router from '@/router/index.js'
 import {Message} from "element-ui"
 Vue.use(Vuex)
@@ -38,16 +38,16 @@ let store = new Vuex.Store({
     },
     actions:{
         login(context,fromdata){
-            axios.post("/api/userlogin",fromdata).then((res)=>{
-                console.log(res.data.code); //msg: "登录成功", code: 200
-                if(res.data.code == 200){
+            http.post("/api/userlogin",fromdata).then((res)=>{
+                console.log(res.code); //msg: "登录成功", code: 200
+                if(res.code == 200){
                     // 储存登录信息
-                    localStorage.setItem("userinfo",JSON.stringify(res.data.list))
-                    context.commit("setinfo",res.data.list)
+                    localStorage.setItem("userinfo",JSON.stringify(res.list))
+                    context.commit("setinfo",res.list)
                     router.replace("/")
                 }else{
                     Message({  
-                        message:res.data.msg,
+                        message:res.msg,
                         type:"error"
                     })
                 }

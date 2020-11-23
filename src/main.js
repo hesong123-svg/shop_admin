@@ -11,6 +11,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI);
 import http from "./utils/http"
 Vue.prototype.$http=http;
+Vue.prototype.$dom="http://localhost:3000/";
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
